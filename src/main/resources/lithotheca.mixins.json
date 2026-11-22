@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "package": "com.oliver.lithotheca.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "LithothecaPlayerDataMixin",
+    "LithothecaServerNetworkMixin"
+  ],
+  "client": [
+    "LithothecaMouseMixin",
+    "LithothecaKeyboardMixin",
+    "LithothecaClientInputMixin",
+    "LithothecaHotbarMixin",
+    "LithothecaAxiomHotbarMixin",
+    "LithothecaCreativeScreenMixin",
+    "LithothecaCreativeInventoryListenerMixin",
+    "LithothecaHandledCreativeRackMixin",
+    "LithothecaHandledScreenAccessor"
+  ],
+  "injectors": {"defaultRequire": 1}
+}

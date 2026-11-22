@@ -1,0 +1,55 @@
+plugins {
+    id 'fabric-loom' version '1.6.12'
+}
+
+group = maven_group
+version = mod_version
+
+def alternateBuildDir = providers.gradleProperty('lithothecaBuildDir').orNull
+if (alternateBuildDir != null) {
+    layout.buildDirectory.set(file(alternateBuildDir))
+}
+
+base {
+    archivesName = "lithotheca-fabric-mc${minecraft_version}"
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.fabricmc.net/' }
+    maven { url = 'https://maven.terraformersmc.com/releases/' }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${minecraft_version}"
+    mappings "net.fabricmc:yarn:${yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
+    modCompileOnly "com.terraformersmc:modmenu:${modmenu_version}"
+    modRuntimeOnly "com.terraformersmc:modmenu:${modmenu_version}"
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    testImplementation "net.fabricmc:fabric-loader-junit:${loader_version}"
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(17)
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 17
+}
+
+tasks.named('processResources') {
+    inputs.property 'version', project.version
+    from('LICENSE') {
+        into 'META-INF'
+    }
+    filesMatching('fabric.mod.json') {
+        expand version: project.version
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

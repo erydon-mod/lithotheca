@@ -1,0 +1,10 @@
+{
+  "frame_width": 256,
+  "frame_height": 80,
+  "columns": 8,
+  "frames": 163,
+  "fps": 20,
+  "seconds": 8.15,
+  "texture_width": 2048,
+  "texture_height": 1680
+}

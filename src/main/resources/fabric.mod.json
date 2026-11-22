@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "lithotheca",
+  "version": "${version}",
+  "name": "ERYDON Lithotheca",
+  "description": "A Creative block library and extended hotbar for the ERYDON Collection.",
+  "authors": ["Oliver"],
+  "contact": {
+    "homepage": "https://erydon.co.uk",
+    "sources": "https://github.com/erydon-mod/lithotheca"
+  },
+  "license": ["LicenseRef-Oliver-Restricted-1.0"],
+  "icon": {
+    "256": "assets/lithotheca/icon.png",
+    "512": "assets/lithotheca/icon-512.png"
+  },
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.oliver.lithotheca.Lithotheca"],
+    "client": ["com.oliver.lithotheca.client.LithothecaClient"],
+    "modmenu": ["com.oliver.lithotheca.client.screen.LithothecaModMenu"]
+  },
+  "mixins": ["lithotheca.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "fabric-api": ">=0.92.11+1.20.1",
+    "minecraft": "1.20.1",
+    "java": ">=17"
+  },
+  "suggests": {
+    "modmenu": "*"
+  }
+}
